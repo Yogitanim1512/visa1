@@ -1,0 +1,6 @@
+{
+  "name": "Global Visa & Passport Services",
+  "description": "Next-generation eco-friendly visa and passport consultancy platform featuring AI gesture navigation, universal accessibility tools, and digital carbon-neutral application workflows.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

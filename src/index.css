@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-scale: 1;
+    --font-family-body: 'Plus Jakarta Sans', Inter, system-ui, -apple-system, sans-serif;
+    --font-family-display: 'EB Garamond', Georgia, serif;
+    --ashen-bg: #c6ae8e;
+    --ashen-ink: #241a12;
+    --ashen-ink-soft: rgba(36, 26, 18, 0.65);
+    --ashen-parchment: #fdf8ef;
+    --ashen-linen: #f6efe1;
+  }
+
+  html {
+    font-size: calc(16px * var(--font-scale, 1));
+    font-family: var(--font-family-body);
+    scroll-behavior: smooth;
+    background-color: var(--ashen-bg);
+    color: var(--ashen-ink);
+  }
+
+  .font-serif-ashen {
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  /* 3D Ashen Press shader frame */
+  .shader-frame {
+    position: relative;
+    width: 100%;
+    height: clamp(520px, 75vh, 760px);
+    overflow: hidden;
+    border-radius: 1.5rem;
+    box-shadow: 
+      0 1px 2px rgba(52, 34, 16, 0.12),
+      0 10px 30px -10px rgba(52, 34, 16, 0.28),
+      0 28px 56px -20px rgba(52, 34, 16, 0.35);
+    background: #c6ae8e;
+    border: 1px solid rgba(36, 26, 18, 0.16);
+  }
+
+  .shader-frame > div {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Dyslexia friendly font mode */
+  body.font-dyslexic {
+    --font-family-body: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif !important;
+    --font-family-display: 'Comic Sans MS', 'Chalkboard SE', 'Comic Neue', sans-serif !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+    line-height: 1.7;
+  }
+
+  /* High contrast mode for accessibility */
+  body.high-contrast {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+  }
+  body.high-contrast * {
+    border-color: #facc15 !important;
+  }
+  body.high-contrast a,
+  body.high-contrast button {
+    text-decoration: underline;
+  }
+  body.high-contrast .bg-slate-900,
+  body.high-contrast .bg-slate-800,
+  body.high-contrast .bg-white {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+  }
+
+  /* Eco-friendly mode (reduces power on OLED & monitors, lower GPU usage) */
+  body.eco-mode {
+    background-color: #1a140e !important;
+    color: #f1e9dd !important;
+  }
+  body.eco-mode .eco-surface {
+    background-color: #241a12 !important;
+    border-color: #3d2c1d !important;
+  }
+
+  /* Accessibility focus ring */
+  *:focus-visible {
+    outline: 2px solid #b89047;
+    outline-offset: 3px;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
