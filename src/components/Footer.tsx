@@ -20,6 +20,9 @@ interface FooterProps {
   onOpenA11y: () => void;
   onOpenGesture: () => void;
   isEcoMode: boolean;
+  onNavigateHome?: () => void;
+  onNavigateAbout?: () => void;
+  onNavigateTouristVisa?: () => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -27,6 +30,9 @@ export const Footer: React.FC<FooterProps> = ({
   onOpenA11y,
   onOpenGesture,
   isEcoMode,
+  onNavigateHome,
+  onNavigateAbout,
+  onNavigateTouristVisa,
 }) => {
   const currentYear = new Date().getFullYear();
 
@@ -35,8 +41,9 @@ export const Footer: React.FC<FooterProps> = ({
   };
 
   const quickLinks = [
-    { label: 'Home', href: '#' },
-    { label: 'About Us', href: '#why-us' },
+    { label: 'Home', href: '#', action: onNavigateHome },
+    { label: 'About Us', href: '#why-us', action: onNavigateAbout },
+    { label: 'Tourist Visa', href: '#', action: onNavigateTouristVisa },
     { label: 'Visa Services', href: '#services' },
     { label: 'Countries', href: '#destinations' },
     { label: 'Contact Us', href: '#contact' },
@@ -191,13 +198,28 @@ export const Footer: React.FC<FooterProps> = ({
               <ul className="space-y-3 text-sm text-blue-100/80">
                 {quickLinks.map((link) => (
                   <li key={link.label}>
-                    <a 
-                      href={link.href}
-                      className="group flex items-center gap-2 hover:text-white transition-colors duration-150"
-                    >
-                      <ChevronRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-1 transition-transform" />
-                      <span>{link.label}</span>
-                    </a>
+                    {link.action ? (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          link.action!();
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="group flex items-center gap-2 hover:text-white transition-colors duration-150 text-left"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                        <span>{link.label}</span>
+                      </button>
+                    ) : (
+                      <a 
+                        href={link.href}
+                        className="group flex items-center gap-2 hover:text-white transition-colors duration-150"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-1 transition-transform" />
+                        <span>{link.label}</span>
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -216,7 +238,13 @@ export const Footer: React.FC<FooterProps> = ({
                   <li key={index}>
                     <button
                       type="button"
-                      onClick={() => onOpenApply(service.category)}
+                      onClick={() => {
+                        if (service.label === 'Tourist Visa' && onNavigateTouristVisa) {
+                          onNavigateTouristVisa();
+                        } else {
+                          onOpenApply(service.category);
+                        }
+                      }}
                       className="group flex items-center gap-2 text-left hover:text-white transition-colors duration-150 focus:outline-none"
                     >
                       <ChevronRight className="w-3.5 h-3.5 text-blue-400 group-hover:translate-x-1 transition-transform shrink-0" />

@@ -56,13 +56,17 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
 
           <h2 
             id="process-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-[#0A3670] dark:text-white"
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${
+              isEcoMode ? 'text-white' : 'text-[#0A3670]'
+            }`}
           >
             Your Visa Journey,{' '}
             <span className="text-[#1565C0]">Simplified</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
+          <p className={`text-base sm:text-lg mt-4 leading-relaxed font-normal ${
+            isEcoMode ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             We handle the intricate immigration bureaucracy, appointment queues, and embassy liaison so you can focus entirely on your destination.
           </p>
         </div>
@@ -87,28 +91,40 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
               >
                 {/* Number & Icon lockup */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-black tabular-nums text-blue-200 dark:text-blue-900 transition-colors">
+                  <span className={`text-3xl sm:text-4xl font-black tabular-nums transition-colors ${
+                    isEcoMode ? 'text-blue-900' : 'text-blue-200'
+                  }`}>
                     {step.number}
                   </span>
                   
-                  <div className="w-11 h-11 rounded-2xl bg-white dark:bg-[#0A1C38] border border-blue-100 dark:border-blue-800 flex items-center justify-center shadow-sm">
+                  <div className={`w-11 h-11 rounded-2xl border flex items-center justify-center shadow-sm ${
+                    isEcoMode ? 'bg-[#0A1C38] border-blue-800' : 'bg-white border-blue-100'
+                  }`}>
                     {getStepIcon(step.iconName)}
                   </div>
                 </div>
 
                 {/* Step Title */}
-                <h3 className="text-lg font-bold text-[#0A3670] dark:text-white tracking-tight mb-2">
+                <h3 className={`text-lg font-bold tracking-tight mb-2 ${
+                  isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                }`}>
                   {step.title}
                 </h3>
 
                 {/* Step Description */}
-                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-normal">
+                <p className={`text-sm leading-relaxed mb-4 font-normal ${
+                  isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                }`}>
                   {step.description}
                 </p>
 
                 {/* Turnaround Timeframe indicator */}
-                <div className="pt-4 border-t border-slate-200/70 dark:border-blue-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                  <span className="font-semibold text-[#0A3670] dark:text-white">Turnaround:</span>
+                <div className={`pt-4 border-t flex items-center justify-between text-xs ${
+                  isEcoMode ? 'border-blue-900/50 text-slate-400' : 'border-slate-200/70 text-slate-500'
+                }`}>
+                  <span className={`font-semibold ${
+                    isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                  }`}>Turnaround:</span>
                   <span className="font-mono tabular-nums text-[#1565C0] font-bold">
                     {step.timeframe}
                   </span>

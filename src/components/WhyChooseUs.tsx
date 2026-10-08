@@ -73,56 +73,90 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
 
             <h2 
               id="why-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-[#0A3670] dark:text-white mb-6"
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight mb-6 ${
+                isEcoMode ? 'text-white' : 'text-[#0A3670]'
+              }`}
             >
               Your Trusted Partner For{' '}
               <span className="text-[#1565C0]">Global Travel</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-8 font-normal">
+            <p className={`text-base sm:text-lg leading-relaxed mb-8 font-normal ${
+              isEcoMode ? 'text-slate-300' : 'text-slate-600'
+            }`}>
               We believe getting an international visa should never be stressful. Our veteran consultants deliver transparent advice, rigorous document auditing, and personalized casework from day one.
             </p>
 
             {/* 3 Core Pillars */}
             <div className="space-y-4 mb-8">
               
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-[#0A1C38] border border-slate-200/80 dark:border-blue-900/60 hover:border-[#1565C0] transition-colors">
-                <div className="w-12 h-12 rounded-2xl bg-white dark:bg-[#071933] border border-blue-100 dark:border-blue-800 flex items-center justify-center shrink-0 shadow-sm">
+              <div className={`flex items-start gap-4 p-4 rounded-2xl border transition-colors ${
+                isEcoMode 
+                  ? 'bg-[#0A1C38] border-blue-900/60 hover:border-[#1565C0]' 
+                  : 'bg-slate-50 border-slate-200/80 hover:border-[#1565C0]'
+              }`}>
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 shadow-sm ${
+                  isEcoMode ? 'bg-[#071933] border-blue-800' : 'bg-white border-blue-100'
+                }`}>
                   <UserCheck className="w-6 h-6 text-[#1565C0]" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0A3670] dark:text-white">
+                  <h3 className={`text-base font-bold ${
+                    isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                  }`}>
                     Experienced Immigration Counsel
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 font-normal">
+                  <p className={`text-sm mt-1 font-normal ${
+                    isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     Direct access to certified visa strategists who have handled thousands of complex consulate scenarios and interview clearances.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-[#0A1C38] border border-slate-200/80 dark:border-blue-900/60 hover:border-[#1565C0] transition-colors">
-                <div className="w-12 h-12 rounded-2xl bg-white dark:bg-[#071933] border border-blue-100 dark:border-blue-800 flex items-center justify-center shrink-0 shadow-sm">
+              <div className={`flex items-start gap-4 p-4 rounded-2xl border transition-colors ${
+                isEcoMode 
+                  ? 'bg-[#0A1C38] border-blue-900/60 hover:border-[#1565C0]' 
+                  : 'bg-slate-50 border-slate-200/80 hover:border-[#1565C0]'
+              }`}>
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 shadow-sm ${
+                  isEcoMode ? 'bg-[#071933] border-blue-800' : 'bg-white border-blue-100'
+                }`}>
                   <ShieldCheck className="w-6 h-6 text-emerald-600" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0A3670] dark:text-white">
+                  <h3 className={`text-base font-bold ${
+                    isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                  }`}>
                     100% Transparent Process &amp; Zero Hidden Fees
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 font-normal">
+                  <p className={`text-sm mt-1 font-normal ${
+                    isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     Clear upfront pricing, honest pre-assessment eligibility ratings, and zero surprise charges before submission.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-[#0A1C38] border border-slate-200/80 dark:border-blue-900/60 hover:border-[#1565C0] transition-colors">
-                <div className="w-12 h-12 rounded-2xl bg-white dark:bg-[#071933] border border-blue-100 dark:border-blue-800 flex items-center justify-center shrink-0 shadow-sm">
+              <div className={`flex items-start gap-4 p-4 rounded-2xl border transition-colors ${
+                isEcoMode 
+                  ? 'bg-[#0A1C38] border-blue-900/60 hover:border-[#1565C0]' 
+                  : 'bg-slate-50 border-slate-200/80 hover:border-[#1565C0]'
+              }`}>
+                <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shrink-0 shadow-sm ${
+                  isEcoMode ? 'bg-[#071933] border-blue-800' : 'bg-white border-blue-100'
+                }`}>
                   <Headset className="w-6 h-6 text-[#0A3670]" aria-hidden="true" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-[#0A3670] dark:text-white">
+                  <h3 className={`text-base font-bold ${
+                    isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                  }`}>
                     Dedicated 24/7 Application Concierge
                   </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 font-normal">
+                  <p className={`text-sm mt-1 font-normal ${
+                    isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     Live updates via email, WhatsApp, and encrypted dashboard with proactive reminders for passport appointments and biometrics.
                   </p>
                 </div>
@@ -144,7 +178,11 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
               <button
                 type="button"
                 onClick={onTalkExpert}
-                className="py-3.5 px-6 text-sm font-bold text-[#0A3670] dark:text-white bg-white dark:bg-[#0A1C38] border border-slate-300 dark:border-blue-800 hover:bg-blue-50/60 rounded-full transition-colors"
+                className={`py-3.5 px-6 text-sm font-bold rounded-full transition-colors border ${
+                  isEcoMode 
+                    ? 'text-white bg-[#0A1C38] border-blue-800 hover:bg-[#0c2347]' 
+                    : 'text-[#0A3670] bg-white border-slate-300 hover:bg-blue-50/60'
+                }`}
               >
                 Talk to an Expert
               </button>
@@ -155,16 +193,22 @@ export const WhyChooseUs: React.FC<WhyChooseUsProps> = ({
         </div>
 
         {/* Quantified Metrics Band */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-8 rounded-3xl bg-slate-50 dark:bg-[#0A1C38] border border-slate-200/80 dark:border-blue-900/60">
+        <div className={`grid grid-cols-2 lg:grid-cols-4 gap-6 py-10 px-8 rounded-3xl border ${
+          isEcoMode ? 'bg-[#0A1C38] border-blue-900/60' : 'bg-slate-50 border-slate-200/80'
+        }`}>
           {TRUST_METRICS.map((item, idx) => (
             <div key={idx} className="text-center sm:text-left">
-              <div className="text-3xl sm:text-4xl font-black text-[#0A3670] dark:text-white tabular-nums tracking-tight">
+              <div className={`text-3xl sm:text-4xl font-black tabular-nums tracking-tight ${
+                isEcoMode ? 'text-white' : 'text-[#0A3670]'
+              }`}>
                 {item.value}
               </div>
               <div className="text-xs sm:text-sm font-bold text-[#1565C0] mt-1">
                 {item.label}
               </div>
-              <div className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              <div className={`text-xs mt-0.5 ${
+                isEcoMode ? 'text-slate-400' : 'text-slate-500'
+              }`}>
                 {item.sub}
               </div>
             </div>

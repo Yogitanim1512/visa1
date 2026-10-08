@@ -56,13 +56,17 @@ export const VisaServices: React.FC<VisaServicesProps> = ({
 
           <h2 
             id="services-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-[#0A3670] dark:text-white"
+            className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${
+              isEcoMode ? 'text-white' : 'text-[#0A3670]'
+            }`}
           >
             Sovereign Solutions For{' '}
             <span className="text-[#1565C0]">Every Journey</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
+          <p className={`text-base sm:text-lg mt-4 leading-relaxed font-normal ${
+            isEcoMode ? 'text-slate-300' : 'text-slate-600'
+          }`}>
             Whether you are travelling for leisure, international education, cross-border corporate business, or permanent skilled migration, our seasoned visa specialists guide you.
           </p>
         </div>
@@ -81,7 +85,7 @@ export const VisaServices: React.FC<VisaServicesProps> = ({
                       : 'bg-blue-50/40 border-[#1565C0] shadow-[0_12px_32px_-12px_rgba(10,54,112,0.18)] ring-1 ring-[#1565C0]/40'
                     : isEcoMode
                     ? 'bg-[#071933] border-blue-900/60 hover:border-[#1565C0]'
-                    : 'bg-slate-50 border-slate-200/90 hover:border-[#1565C0] hover:shadow-lg'
+                    : 'bg-white border-slate-200/90 hover:border-[#1565C0] hover:shadow-lg'
                 }`}
               >
                 {/* Most Popular Label if featured */}
@@ -93,11 +97,15 @@ export const VisaServices: React.FC<VisaServicesProps> = ({
 
                 <div>
                   {/* Service Icon */}
-                  <div className="w-12 h-12 rounded-2xl bg-white dark:bg-[#0A1C38] border border-blue-100 dark:border-blue-800 flex items-center justify-center shadow-sm mb-5">
+                  <div className={`w-12 h-12 rounded-2xl border flex items-center justify-center shadow-sm mb-5 ${
+                    isEcoMode ? 'bg-[#0A1C38] border-blue-800' : 'bg-white border-blue-100'
+                  }`}>
                     {getIcon(service.iconName)}
                   </div>
 
-                  <h3 className="text-xl font-bold tracking-tight text-[#0A3670] dark:text-white">
+                  <h3 className={`text-xl font-bold tracking-tight ${
+                    isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                  }`}>
                     {service.title}
                   </h3>
                   
@@ -105,14 +113,20 @@ export const VisaServices: React.FC<VisaServicesProps> = ({
                     {service.tagline}
                   </p>
 
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6 font-normal">
+                  <p className={`text-sm leading-relaxed mb-6 font-normal ${
+                    isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     {service.description}
                   </p>
 
                   {/* Included Features Checklist */}
-                  <div className="space-y-2.5 mb-6 pt-4 border-t border-slate-200/70 dark:border-blue-900/50">
+                  <div className={`space-y-2.5 mb-6 pt-4 border-t ${
+                    isEcoMode ? 'border-blue-900/50' : 'border-slate-200/70'
+                  }`}>
                     {service.includedFeatures.map((feat, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                      <div key={i} className={`flex items-start gap-2 text-xs font-medium ${
+                        isEcoMode ? 'text-slate-300' : 'text-slate-700'
+                      }`}>
                         <Check className="w-3.5 h-3.5 text-[#1565C0] shrink-0 mt-0.5" aria-hidden="true" />
                         <span>{feat}</span>
                       </div>
@@ -122,12 +136,16 @@ export const VisaServices: React.FC<VisaServicesProps> = ({
 
                 <div>
                   {/* Duration & Fee info */}
-                  <div className="pt-4 border-t border-slate-200/70 dark:border-blue-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-4">
+                  <div className={`pt-4 border-t flex items-center justify-between text-xs mb-4 ${
+                    isEcoMode ? 'border-blue-900/50 text-slate-400' : 'border-slate-200/70 text-slate-500'
+                  }`}>
                     <div className="flex items-center gap-1.5 font-medium">
                       <Clock className="w-3.5 h-3.5 text-[#1565C0]" aria-hidden="true" />
                       <span className="font-mono tabular-nums">{service.processingDays}</span>
                     </div>
-                    <span className="font-mono tabular-nums font-bold text-[#0A3670] dark:text-white">
+                    <span className={`font-mono tabular-nums font-bold ${
+                      isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                    }`}>
                       {service.feeEstimate}
                     </span>
                   </div>

@@ -45,10 +45,14 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
               <Search className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Dossier Assessment</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0A3670] dark:text-white">
+            <h2 className={`text-xl sm:text-2xl font-bold tracking-tight ${
+              isEcoMode ? 'text-white' : 'text-[#0A3670]'
+            }`}>
               Find Your Visa
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+            <p className={`text-xs mt-0.5 ${
+              isEcoMode ? 'text-slate-400' : 'text-slate-500'
+            }`}>
               Select destination &amp; category for instant consular requirements
             </p>
           </div>
@@ -57,7 +61,9 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
           <div className="flex-1">
             <label 
               htmlFor="destination-select" 
-              className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5"
+              className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${
+                isEcoMode ? 'text-slate-300' : 'text-slate-600'
+              }`}
             >
               Destination Country
             </label>
@@ -88,7 +94,9 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
           <div className="flex-1">
             <label 
               htmlFor="visa-type-select" 
-              className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5"
+              className={`block text-xs font-bold uppercase tracking-wider mb-1.5 ${
+                isEcoMode ? 'text-slate-300' : 'text-slate-600'
+              }`}
             >
               Visa Category
             </label>

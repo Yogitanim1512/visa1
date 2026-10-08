@@ -37,12 +37,16 @@ export const ConsularArchiveShelf: React.FC<ConsularArchiveShelfProps> = ({
 
             <h2
               id="archive-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#0A3670] dark:text-white leading-[1.12]"
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-[1.12] ${
+                isEcoMode ? 'text-white' : 'text-[#0A3670]'
+              }`}
             >
               The Sovereign Passport &amp; Visa Shelf
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 mt-3 font-normal leading-relaxed">
+            <p className={`text-base sm:text-lg mt-3 font-normal leading-relaxed ${
+              isEcoMode ? 'text-slate-300' : 'text-slate-700'
+            }`}>
               Explore ten tactile 3D sovereign passport codices and diplomatic visa dossiers with embossed gold foil seals, official biometric security watermarks, and international entry credentials. Direct hover, select, flip, and drag to inspect each country’s document requirements.
             </p>
           </div>
@@ -71,7 +75,9 @@ export const ConsularArchiveShelf: React.FC<ConsularArchiveShelfProps> = ({
           <Scene />
 
           {/* Quick interaction footer hint */}
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-400 px-3">
+          <div className={`mt-4 flex flex-wrap items-center justify-between gap-3 text-xs px-3 ${
+            isEcoMode ? 'text-slate-400' : 'text-slate-600'
+          }`}>
             <div className="flex items-center gap-4">
               <span className="flex items-center gap-1.5 font-medium">
                 <Hand className="w-4 h-4 text-[#1565C0]" />

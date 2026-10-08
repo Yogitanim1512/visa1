@@ -55,13 +55,17 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
 
             <h2 
               id="destinations-heading"
-              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-[#0A3670] dark:text-white"
+              className={`text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight ${
+                isEcoMode ? 'text-white' : 'text-[#0A3670]'
+              }`}
             >
               Where Will Your Journey{' '}
               <span className="text-[#1565C0]">Take You?</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-3 max-w-lg">
+            <p className={`text-base sm:text-lg mt-3 max-w-lg ${
+              isEcoMode ? 'text-slate-300' : 'text-slate-600'
+            }`}>
               Explore leading international destinations with transparent timelines, verified consulate fees, and expedited processing pathways.
             </p>
           </div>
@@ -70,7 +74,9 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
           <div 
             role="tablist"
             aria-label="Filter destinations by continent"
-            className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-full bg-white dark:bg-[#0A1C38] border border-slate-200 dark:border-blue-900 shadow-sm self-start md:self-auto"
+            className={`flex flex-wrap items-center gap-1.5 p-1.5 rounded-full border shadow-sm self-start md:self-auto ${
+              isEcoMode ? 'bg-[#0A1C38] border-blue-900' : 'bg-white border-slate-200'
+            }`}
           >
             {[
               { id: 'all', label: 'All Regions' },
@@ -89,7 +95,9 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
                   className={`px-4 py-2 text-xs font-bold rounded-full transition-all whitespace-nowrap ${
                     isActive
                       ? 'bg-[#0A3670] text-white shadow-sm'
-                      : 'text-[#0A3670]/70 dark:text-slate-300 hover:text-[#0A3670] dark:hover:text-white hover:bg-blue-50/60'
+                      : isEcoMode
+                      ? 'text-slate-300 hover:text-white hover:bg-blue-900/50'
+                      : 'text-[#0A3670]/70 hover:text-[#0A3670] hover:bg-blue-50/60'
                   }`}
                 >
                   {tab.label}
@@ -164,11 +172,15 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
 
                 {/* Card Content & Metrics */}
                 <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-2 mb-4">
+                  <p className={`text-sm leading-relaxed line-clamp-2 mb-4 font-normal ${
+                    isEcoMode ? 'text-slate-300' : 'text-slate-600'
+                  }`}>
                     {dest.description}
                   </p>
 
-                  <div className="pt-4 border-t border-slate-100 dark:border-blue-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <div className={`pt-4 border-t flex items-center justify-between text-xs ${
+                    isEcoMode ? 'border-blue-900/50 text-slate-400' : 'border-slate-100 text-slate-500'
+                  }`}>
                     <div className="flex items-center gap-1.5 font-medium">
                       <Clock className="w-3.5 h-3.5 text-[#1565C0]" aria-hidden="true" />
                       <span className="font-mono tabular-nums">{dest.processingTime}</span>
@@ -176,22 +188,30 @@ export const PopularDestinations: React.FC<PopularDestinationsProps> = ({
 
                     <div className="flex items-center gap-1.5 font-medium">
                       <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
-                      <span className="font-mono tabular-nums text-[#0A3670] dark:text-white font-bold">
+                      <span className={`font-mono tabular-nums font-bold ${
+                        isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                      }`}>
                         {dest.successRate} Success
                       </span>
                     </div>
                   </div>
 
                   {/* Action Link */}
-                  <div className="mt-4 pt-3 flex items-center justify-between border-t border-slate-100 dark:border-blue-900/40">
-                    <span className="text-xs font-bold text-[#0A3670] dark:text-white">
+                  <div className={`mt-4 pt-3 flex items-center justify-between border-t ${
+                    isEcoMode ? 'border-blue-900/40' : 'border-slate-100'
+                  }`}>
+                    <span className={`text-xs font-bold ${
+                      isEcoMode ? 'text-white' : 'text-[#0A3670]'
+                    }`}>
                       Standard Fee: <span className="font-mono tabular-nums text-[#1565C0]">{dest.standardFee}</span>
                     </span>
 
                     <button
                       type="button"
                       onClick={() => onSelectDestination(dest)}
-                      className="text-xs font-bold text-[#0A3670] dark:text-blue-300 hover:text-[#1565C0] flex items-center gap-1 hover:underline"
+                      className={`text-xs font-bold flex items-center gap-1 hover:underline ${
+                        isEcoMode ? 'text-blue-300 hover:text-white' : 'text-[#0A3670] hover:text-[#1565C0]'
+                      }`}
                     >
                       <span>Check Checklist</span>
                       <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />

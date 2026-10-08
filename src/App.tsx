@@ -14,11 +14,16 @@ import { AiGestureController } from './components/AiGestureController';
 import { A11yControlPanel } from './components/A11yControlPanel';
 import { RequirementsModal } from './components/RequirementsModal';
 import { ApplyModal } from './components/ApplyModal';
+import { AboutUsPage } from './components/AboutUsPage';
+import { TouristVisaPage } from './components/TouristVisaPage';
 import { POPULAR_DESTINATIONS } from './data/visaData';
 import { Destination, VisaCategory, A11ySettings } from './types';
 import { playGestureSound } from './utils/audio';
 
 export default function App() {
+  // Navigation State
+  const [currentPage, setCurrentPage] = useState<'home' | 'about' | 'tourist-visa'>('home');
+
   // Theme & Modes
   const [isEcoMode, setIsEcoMode] = useState<boolean>(false);
   const [isGestureModeActive, setIsGestureModeActive] = useState<boolean>(false);
@@ -48,6 +53,8 @@ export default function App() {
     setIsEcoMode((prev) => {
       const next = !prev;
       document.body.classList.toggle('eco-mode', next);
+      document.body.classList.toggle('dark', next);
+      document.documentElement.classList.toggle('dark', next);
       if (a11ySettings.audioFeedback) playGestureSound('toggle');
       return next;
     });
@@ -141,8 +148,8 @@ export default function App() {
       
       {/* Universal Top Navigation */}
       <Header
-        onOpenApply={() => handleOpenApply()}
-        onOpenCheckRequirements={() => handleOpenRequirements()}
+        onOpenApply={(category) => handleOpenApply(undefined, category)}
+        onOpenCheckRequirements={(countryId, category) => handleOpenRequirements(countryId, category)}
         isGestureModeActive={isGestureModeActive}
         onToggleGestureMode={() => setIsGestureModeActive((prev) => !prev)}
         isA11yOpen={isA11yOpen}
@@ -150,78 +157,122 @@ export default function App() {
         isEcoMode={isEcoMode}
         onToggleEcoMode={handleToggleEcoMode}
         a11ySettings={a11ySettings}
+        currentPage={currentPage}
+        onNavigateHome={() => {
+          setCurrentPage('home');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateAbout={() => {
+          setCurrentPage('about');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateTouristVisa={() => {
+          setCurrentPage('tourist-visa');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
 
       {/* Main Content Area */}
-      <main id="main-content" role="main" className="flex-1 focus:outline-none">
-        
-        {/* Section 1: Hero Slider */}
-        <HeroSlider
-          onApplyClick={() => handleOpenApply()}
-          onExploreServices={() => {
-            const el = document.getElementById('services');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-          onCheckRequirements={() => handleOpenRequirements()}
-          onTalkExpert={() => handleOpenApply()}
-          isEcoMode={isEcoMode}
-          reducedMotion={a11ySettings.reducedMotion}
-        />
+      {currentPage === 'about' ? (
+        <main id="main-content" role="main" className="flex-1 focus:outline-none">
+          <AboutUsPage
+            onBackToHome={() => {
+              setCurrentPage('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenApply={(category) => handleOpenApply(undefined, category)}
+            onOpenCheckRequirements={() => handleOpenRequirements()}
+            isEcoMode={isEcoMode}
+          />
+        </main>
+      ) : currentPage === 'tourist-visa' ? (
+        <main id="main-content" role="main" className="flex-1 focus:outline-none">
+          <TouristVisaPage
+            onBackToHome={() => {
+              setCurrentPage('home');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            onOpenApply={(category) => handleOpenApply(undefined, category || 'tourist')}
+            onOpenCheckRequirements={(countryId, category) => handleOpenRequirements(countryId, category || 'tourist')}
+            isEcoMode={isEcoMode}
+          />
+        </main>
+      ) : (
+        <main id="main-content" role="main" className="flex-1 focus:outline-none">
+          
+          {/* Section 1: Hero Slider */}
+          <HeroSlider
+            onApplyClick={() => handleOpenApply()}
+            onExploreServices={() => {
+              const el = document.getElementById('services');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            onCheckRequirements={() => handleOpenRequirements()}
+            onTalkExpert={() => handleOpenApply()}
+            isEcoMode={isEcoMode}
+            reducedMotion={a11ySettings.reducedMotion}
+          />
 
-        {/* Floating Visa Search Bar */}
-        <VisaSearch
-          onCheckRequirements={handleOpenRequirements}
-          isEcoMode={isEcoMode}
-        />
+          {/* Floating Visa Search Bar */}
+          <VisaSearch
+            onCheckRequirements={handleOpenRequirements}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 2: 3D Ashen Press Sovereign Consular Archive Shelf */}
-        <ConsularArchiveShelf
-          onOpenApply={() => handleOpenApply()}
-          onOpenRequirements={() => handleOpenRequirements()}
-          isEcoMode={isEcoMode}
-        />
+          {/* Section 2: 3D Ashen Press Sovereign Consular Archive Shelf */}
+          <ConsularArchiveShelf
+            onOpenApply={() => handleOpenApply()}
+            onOpenRequirements={() => handleOpenRequirements()}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 3: Popular Destinations */}
-        <PopularDestinations
-          onSelectDestination={(dest) => {
-            setSelectedDestination(dest);
-            setIsReqModalOpen(true);
-          }}
-          isEcoMode={isEcoMode}
-        />
+          {/* Section 3: Popular Destinations */}
+          <PopularDestinations
+            onSelectDestination={(dest) => {
+              setSelectedDestination(dest);
+              setIsReqModalOpen(true);
+            }}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 4: Visa Services */}
-        <VisaServices
-          onSelectService={(category) => {
-            setSelectedVisaCategory(category);
-            setIsApplyModalOpen(true);
-          }}
-          isEcoMode={isEcoMode}
-        />
+          {/* Section 4: Visa Services */}
+          <VisaServices
+            onSelectService={(category) => {
+              if (category === 'tourist') {
+                setCurrentPage('tourist-visa');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              } else {
+                setSelectedVisaCategory(category);
+                setIsApplyModalOpen(true);
+              }
+            }}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 5: Simple 4-Step Process */}
-        <ProcessSteps
-          onStartConsultation={() => handleOpenApply()}
-          isEcoMode={isEcoMode}
-        />
+          {/* Section 5: Simple 4-Step Process */}
+          <ProcessSteps
+            onStartConsultation={() => handleOpenApply()}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 6: Eco Sustainability & Digital Footprint Hub */}
-        <EcoSustainabilityHub
-          isEcoMode={isEcoMode}
-          onToggleEcoMode={handleToggleEcoMode}
-        />
+          {/* Section 6: Eco Sustainability & Digital Footprint Hub */}
+          <EcoSustainabilityHub
+            isEcoMode={isEcoMode}
+            onToggleEcoMode={handleToggleEcoMode}
+          />
 
-        {/* Section 7: Why Choose Us & Trust Metrics */}
-        <WhyChooseUs
-          onTalkExpert={() => handleOpenApply()}
-          onApplyClick={() => handleOpenApply()}
-          isEcoMode={isEcoMode}
-        />
+          {/* Section 7: Why Choose Us & Trust Metrics */}
+          <WhyChooseUs
+            onTalkExpert={() => handleOpenApply()}
+            onApplyClick={() => handleOpenApply()}
+            isEcoMode={isEcoMode}
+          />
 
-        {/* Section 8: FAQs Accordion */}
-        <FaqSection isEcoMode={isEcoMode} />
+          {/* Section 8: FAQs Accordion */}
+          <FaqSection isEcoMode={isEcoMode} />
 
-      </main>
+        </main>
+      )}
 
       {/* Universal Footer */}
       <Footer
@@ -229,6 +280,18 @@ export default function App() {
         onOpenA11y={() => setIsA11yOpen(true)}
         onOpenGesture={() => setIsGestureModeActive(true)}
         isEcoMode={isEcoMode}
+        onNavigateHome={() => {
+          setCurrentPage('home');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateAbout={() => {
+          setCurrentPage('about');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateTouristVisa={() => {
+          setCurrentPage('tourist-visa');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
       />
 
       {/* Floating AI Gesture Controller */}
