@@ -43,19 +43,19 @@ export function AshenPress({ className = "", style }: AshenPressProps) {
       ref={hostRef}
       className={`threeui-background ashen-press${className ? ` ${className}` : ""}`}
       role="group"
-      aria-label="Interactive Ashen Press art book shelf"
+      aria-label="Interactive Sovereign Passport and Visa Shelf"
       data-state={!mounted ? "paused" : ready ? "ready" : "loading"}
       style={{
         position: "relative",
         overflow: "hidden",
-        background: "#c6ae8e",
+        background: "#eef3f9",
         pointerEvents: "auto",
         ...style,
       }}
     >
       {mounted ? (
         <iframe
-          title="Ashen Press — The Art Book Shelf"
+          title="Global Visa & Passport Services — Consular Archive Shelf"
           srcDoc={ashenPressSource}
           sandbox="allow-scripts"
           loading="eager"
@@ -67,7 +67,7 @@ export function AshenPress({ className = "", style }: AshenPressProps) {
             width: "100%",
             height: "100%",
             border: 0,
-            background: "#c6ae8e",
+            background: "#eef3f9",
             opacity: ready ? 1 : 0,
             pointerEvents: ready ? "auto" : "none",
             transition: "opacity 240ms ease-out",

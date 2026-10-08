@@ -98,24 +98,24 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 w-full">
         <div className="max-w-2xl lg:max-w-3xl">
           
-          {/* Anti-Slop Discipline: Clean unboxed metadata with bullet separator */}
-          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-medium tracking-wide uppercase text-[#b89047] mb-4 sm:mb-6">
-            <Globe2 className="w-4 h-4 text-[#b89047] shrink-0" aria-hidden="true" />
+          {/* Clean unboxed metadata with bullet separator */}
+          <div className="flex items-center gap-2.5 text-xs sm:text-sm font-semibold tracking-wide uppercase text-blue-300 mb-4 sm:mb-6">
+            <Globe2 className="w-4 h-4 text-blue-400 shrink-0" aria-hidden="true" />
             <span>{slide.tag}</span>
-            <span aria-hidden="true" className="text-[#b89047]/60">·</span>
-            <span className="text-[#f6efe1]/80 font-mono tabular-nums">{slide.metric}</span>
+            <span aria-hidden="true" className="text-blue-400/60">·</span>
+            <span className="text-white font-mono tabular-nums">{slide.metric}</span>
           </div>
 
           {/* Display Headline with balanced wrap */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif-ashen font-medium tracking-tight text-white leading-[1.08] text-balance mb-5 sm:mb-6">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white leading-[1.08] text-balance mb-5 sm:mb-6">
             {slide.title}{' '}
-            <span className="italic text-[#d8c5aa]">
+            <span className="text-blue-300">
               {slide.highlight}
             </span>
           </h1>
 
           {/* Description */}
-          <p className="text-base sm:text-lg lg:text-xl text-[#f6efe1]/85 leading-relaxed max-w-2xl mb-8 sm:mb-10 font-normal">
+          <p className="text-base sm:text-lg lg:text-xl text-blue-100/90 leading-relaxed max-w-2xl mb-8 sm:mb-10 font-normal">
             {slide.description}
           </p>
 
@@ -124,7 +124,7 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             <button
               type="button"
               onClick={() => handleCtaPrimary(currentSlideIndex)}
-              className="py-3.5 px-7 text-sm sm:text-base font-semibold text-[#241a12] bg-[#fdf8ef] hover:bg-white rounded-full shadow-[0_1px_1px_rgba(52,34,16,0.18),0_5px_10px_rgba(52,34,16,0.16)] transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
+              className="py-3.5 px-8 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-[#0A3670] to-[#1565C0] hover:from-[#082a57] hover:to-[#0f4d96] rounded-full shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2.5"
             >
               <span>{slide.ctaPrimary}</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -133,16 +133,16 @@ export const HeroSlider: React.FC<HeroSliderProps> = ({
             <button
               type="button"
               onClick={() => handleCtaSecondary(currentSlideIndex)}
-              className="py-3.5 px-7 text-sm sm:text-base font-semibold text-[#f6efe1] bg-[#241a12]/60 hover:bg-[#241a12]/90 border border-white/20 backdrop-blur-md rounded-full transition-colors"
+              className="py-3.5 px-7 text-sm sm:text-base font-semibold text-white bg-white/10 hover:bg-white/20 border border-white/30 backdrop-blur-md rounded-full transition-colors"
             >
               {slide.ctaSecondary}
             </button>
           </div>
 
           {/* Trust Metric Micro-bar */}
-          <div className="mt-10 pt-6 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-[#f6efe1]/80">
+          <div className="mt-10 pt-6 border-t border-white/15 flex flex-wrap items-center gap-6 text-xs sm:text-sm text-blue-100/85">
             <div className="flex items-center gap-2">
-              <ShieldCheck className="w-4 h-4 text-[#b89047]" aria-hidden="true" />
+              <ShieldCheck className="w-4 h-4 text-[#d4af37]" aria-hidden="true" />
               <span>Government Registered Consultancy</span>
             </div>
             <div className="flex items-center gap-2">

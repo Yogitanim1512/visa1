@@ -5,8 +5,8 @@ import {
   Send, 
   PlaneTakeoff, 
   CheckCircle2, 
-  ChevronRight,
-  ShieldAlert
+  ChevronRight, 
+  ShieldAlert 
 } from 'lucide-react';
 import { PROCESS_STEPS } from '../data/visaData';
 
@@ -24,15 +24,15 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
   const getStepIcon = (name: string) => {
     switch (name) {
       case 'MessageSquare':
-        return <MessageSquare className="w-5 h-5 text-emerald-600" aria-hidden="true" />;
+        return <MessageSquare className="w-5 h-5 text-[#1565C0]" aria-hidden="true" />;
       case 'FileCheck2':
-        return <FileCheck2 className="w-5 h-5 text-teal-600" aria-hidden="true" />;
+        return <FileCheck2 className="w-5 h-5 text-[#0A3670]" aria-hidden="true" />;
       case 'Send':
         return <Send className="w-5 h-5 text-indigo-600" aria-hidden="true" />;
       case 'PlaneTakeoff':
-        return <PlaneTakeoff className="w-5 h-5 text-amber-600" aria-hidden="true" />;
+        return <PlaneTakeoff className="w-5 h-5 text-emerald-600" aria-hidden="true" />;
       default:
-        return <MessageSquare className="w-5 h-5 text-emerald-600" aria-hidden="true" />;
+        return <MessageSquare className="w-5 h-5 text-[#1565C0]" aria-hidden="true" />;
     }
   };
 
@@ -41,33 +41,33 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
       id="process" 
       aria-labelledby="process-heading"
       className={`py-20 sm:py-28 transition-colors ${
-        isEcoMode ? 'bg-[#1a140e] text-[#f1e9dd]' : 'bg-[#dfd3c1]/70 text-[#241a12]'
+        isEcoMode ? 'bg-[#071529] text-slate-100' : 'bg-slate-50 text-[#0A3670]'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#b89047] mb-2.5">
-            <span>Archival Protocol</span>
+          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#1565C0] mb-2.5">
+            <span>Verified Methodology</span>
             <span aria-hidden="true">·</span>
-            <span className="font-mono opacity-75">Four Simplified Chapters</span>
+            <span className="font-mono opacity-85">Four Streamlined Chapters</span>
           </div>
 
           <h2 
             id="process-heading"
-            className="text-3xl sm:text-4xl lg:text-5xl font-serif-ashen font-medium tracking-tight leading-tight text-[#241a12] dark:text-white"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight text-[#0A3670] dark:text-white"
           >
             Your Visa Journey,{' '}
-            <span className="italic">Simplified</span>
+            <span className="text-[#1565C0]">Simplified</span>
           </h2>
 
-          <p className="text-base sm:text-lg text-[#241a12]/75 dark:text-[#f1e9dd]/75 mt-4 leading-relaxed font-normal">
+          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 mt-4 leading-relaxed font-normal">
             We handle the intricate immigration bureaucracy, appointment queues, and embassy liaison so you can focus entirely on your destination.
           </p>
         </div>
 
-        {/* 4 Process Cards with Horizontal Flow line */}
+        {/* 4 Process Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {PROCESS_STEPS.map((step, idx) => {
             const isSelected = activeStep === idx;
@@ -78,38 +78,38 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
                 className={`cursor-pointer rounded-3xl p-6 sm:p-7 transition-all duration-300 border relative ${
                   isSelected
                     ? isEcoMode
-                      ? 'bg-[#241a12] border-[#b89047] ring-1 ring-[#b89047]/40'
-                      : 'bg-[#fdf8ef] border-[#b89047] shadow-[0_12px_28px_-10px_rgba(52,34,16,0.18)] ring-1 ring-[#b89047]/30'
+                      ? 'bg-[#0A1C38] border-[#1565C0] ring-1 ring-[#1565C0]/60'
+                      : 'bg-blue-50/50 border-[#1565C0] shadow-[0_12px_28px_-10px_rgba(10,54,112,0.18)] ring-1 ring-[#1565C0]/40'
                     : isEcoMode
-                    ? 'bg-[#1a140e]/90 border-[#3d2c1d] hover:border-[#b89047]'
-                    : 'bg-[#f6efe1] border-[#241a12]/15 hover:border-[#b89047] hover:shadow-md'
+                    ? 'bg-[#061427] border-blue-900/50 hover:border-[#1565C0]'
+                    : 'bg-white border-slate-200/90 hover:border-[#1565C0] hover:shadow-md'
                 }`}
               >
                 {/* Number & Icon lockup */}
                 <div className="flex items-center justify-between mb-6">
-                  <span className="text-3xl sm:text-4xl font-serif-ashen font-normal tabular-nums text-[#241a12]/40 dark:text-[#f1e9dd]/40 group-hover:text-[#b89047] transition-colors">
+                  <span className="text-3xl sm:text-4xl font-black tabular-nums text-blue-200 dark:text-blue-900 transition-colors">
                     {step.number}
                   </span>
                   
-                  <div className="w-11 h-11 rounded-2xl bg-[#fdf8ef] dark:bg-[#1a140e] border border-[#241a12]/15 flex items-center justify-center">
+                  <div className="w-11 h-11 rounded-2xl bg-white dark:bg-[#0A1C38] border border-blue-100 dark:border-blue-800 flex items-center justify-center shadow-sm">
                     {getStepIcon(step.iconName)}
                   </div>
                 </div>
 
                 {/* Step Title */}
-                <h3 className="text-lg font-serif-ashen font-medium text-[#241a12] dark:text-white tracking-tight mb-2">
+                <h3 className="text-lg font-bold text-[#0A3670] dark:text-white tracking-tight mb-2">
                   {step.title}
                 </h3>
 
                 {/* Step Description */}
-                <p className="text-sm text-[#241a12]/75 dark:text-[#f1e9dd]/75 leading-relaxed mb-4 font-normal">
+                <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 font-normal">
                   {step.description}
                 </p>
 
                 {/* Turnaround Timeframe indicator */}
-                <div className="pt-4 border-t border-[#241a12]/10 dark:border-white/10 flex items-center justify-between text-xs text-[#241a12]/60 dark:text-[#f1e9dd]/60">
-                  <span className="font-semibold text-[#241a12] dark:text-[#f1e9dd]">Turnaround:</span>
-                  <span className="font-mono tabular-nums text-[#b89047] font-medium">
+                <div className="pt-4 border-t border-slate-200/70 dark:border-blue-900/50 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                  <span className="font-semibold text-[#0A3670] dark:text-white">Turnaround:</span>
+                  <span className="font-mono tabular-nums text-[#1565C0] font-bold">
                     {step.timeframe}
                   </span>
                 </div>
@@ -123,7 +123,7 @@ export const ProcessSteps: React.FC<ProcessStepsProps> = ({
           <button
             type="button"
             onClick={onStartConsultation}
-            className="py-3.5 px-7 text-sm font-semibold rounded-full bg-[#241a12] text-[#f6efe1] hover:bg-[#382b20] transition-colors shadow-sm inline-flex items-center gap-2"
+            className="py-3.5 px-8 text-sm font-bold rounded-full bg-gradient-to-r from-[#0A3670] to-[#1565C0] text-white hover:from-[#082a57] hover:to-[#0f4d96] transition-all shadow-md hover:shadow-lg inline-flex items-center gap-2"
           >
             <span>Book Free Pre-Assessment Consultation</span>
             <ChevronRight className="w-4 h-4" aria-hidden="true" />

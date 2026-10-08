@@ -136,7 +136,7 @@ export default function App() {
 
   return (
     <div className={`min-h-screen flex flex-col font-sans transition-colors duration-200 ${
-      isEcoMode ? 'bg-[#1a140e] text-[#f1e9dd]' : 'bg-[#c6ae8e] text-[#241a12]'
+      isEcoMode ? 'bg-[#050e1a] text-slate-100' : 'bg-slate-50 text-slate-900'
     }`}>
       
       {/* Universal Top Navigation */}

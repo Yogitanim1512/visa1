@@ -33,23 +33,23 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
       <div 
         className={`p-6 sm:p-8 rounded-3xl shadow-xl transition-all border ${
           isEcoMode
-            ? 'bg-[#241a12] border-[#3d2c1d] text-[#f1e9dd] shadow-black/40'
-            : 'bg-[#fdf8ef] border-[#241a12]/15 text-[#241a12] shadow-[0_20px_40px_-15px_rgba(52,34,16,0.18)]'
+            ? 'bg-[#0A1C38] border-blue-900/60 text-slate-100 shadow-black/40'
+            : 'bg-white border-blue-100 text-[#0A3670] shadow-[0_20px_45px_-12px_rgba(10,54,112,0.14)]'
         }`}
       >
         <form onSubmit={handleSubmit} className="flex flex-col lg:flex-row lg:items-end gap-4 sm:gap-6">
           
           {/* Header Title with Subtitle */}
           <div className="lg:w-1/4 shrink-0">
-            <div className="flex items-center gap-2 text-[#b89047] font-semibold text-xs tracking-wider uppercase mb-1">
+            <div className="flex items-center gap-2 text-[#1565C0] font-bold text-xs tracking-wider uppercase mb-1">
               <Search className="w-3.5 h-3.5" aria-hidden="true" />
               <span>Dossier Assessment</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-serif-ashen font-medium tracking-tight text-[#241a12] dark:text-white">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-[#0A3670] dark:text-white">
               Find Your Visa
             </h2>
-            <p className="text-xs text-[#241a12]/65 dark:text-[#f1e9dd]/65 mt-0.5">
-              Select destination & category for instant consular requirements
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
+              Select destination &amp; category for instant consular requirements
             </p>
           </div>
 
@@ -57,22 +57,22 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
           <div className="flex-1">
             <label 
               htmlFor="destination-select" 
-              className="block text-xs font-semibold uppercase tracking-wider text-[#241a12]/60 dark:text-[#f1e9dd]/60 mb-1.5"
+              className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5"
             >
               Destination Country
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#241a12]/50 dark:text-[#f1e9dd]/50">
-                <MapPin className="w-4 h-4 text-[#b89047]" aria-hidden="true" />
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#1565C0]">
+                <MapPin className="w-4 h-4" aria-hidden="true" />
               </div>
               <select
                 id="destination-select"
                 value={selectedCountry}
                 onChange={(e) => setSelectedCountry(e.target.value)}
-                className={`w-full pl-10 pr-4 py-3 text-sm font-medium rounded-2xl border focus:outline-none focus:ring-2 focus:ring-[#b89047] transition-colors appearance-none cursor-pointer ${
+                className={`w-full pl-10 pr-4 py-3 text-sm font-semibold rounded-2xl border focus:outline-none focus:ring-2 focus:ring-[#1565C0] transition-colors appearance-none cursor-pointer ${
                   isEcoMode 
-                    ? 'bg-[#1a140e] border-[#3d2c1d] text-white' 
-                    : 'bg-[#f6efe1] border-[#241a12]/15 text-[#241a12] hover:bg-[#ede5d5]'
+                    ? 'bg-[#071933] border-blue-800 text-white' 
+                    : 'bg-slate-50 border-slate-200 text-[#0A3670] hover:bg-blue-50/50'
                 }`}
               >
                 {POPULAR_DESTINATIONS.map((dest) => (
@@ -88,22 +88,22 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
           <div className="flex-1">
             <label 
               htmlFor="visa-type-select" 
-              className="block text-xs font-semibold uppercase tracking-wider text-[#241a12]/60 dark:text-[#f1e9dd]/60 mb-1.5"
+              className="block text-xs font-bold uppercase tracking-wider text-slate-600 dark:text-slate-300 mb-1.5"
             >
               Visa Category
             </label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#241a12]/50 dark:text-[#f1e9dd]/50">
-                <FileText className="w-4 h-4 text-[#b89047]" aria-hidden="true" />
+              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#1565C0]">
+                <FileText className="w-4 h-4" aria-hidden="true" />
               </div>
               <select
                 id="visa-type-select"
                 value={selectedVisaType}
                 onChange={(e) => setSelectedVisaType(e.target.value as VisaCategory)}
-                className={`w-full pl-10 pr-4 py-3 text-sm font-medium rounded-2xl border focus:outline-none focus:ring-2 focus:ring-[#b89047] transition-colors appearance-none cursor-pointer ${
+                className={`w-full pl-10 pr-4 py-3 text-sm font-semibold rounded-2xl border focus:outline-none focus:ring-2 focus:ring-[#1565C0] transition-colors appearance-none cursor-pointer ${
                   isEcoMode 
-                    ? 'bg-[#1a140e] border-[#3d2c1d] text-white' 
-                    : 'bg-[#f6efe1] border-[#241a12]/15 text-[#241a12] hover:bg-[#ede5d5]'
+                    ? 'bg-[#071933] border-blue-800 text-white' 
+                    : 'bg-slate-50 border-slate-200 text-[#0A3670] hover:bg-blue-50/50'
                 }`}
               >
                 <option value="tourist">Tourist Visa (Leisure / Vacation)</option>
@@ -118,7 +118,7 @@ export const VisaSearch: React.FC<VisaSearchProps> = ({
           <div className="lg:w-auto shrink-0">
             <button
               type="submit"
-              className="w-full lg:w-auto py-3.5 px-6 text-sm font-semibold rounded-full bg-[#241a12] text-[#f6efe1] hover:bg-[#382b20] transition-colors shadow-md flex items-center justify-center gap-2 whitespace-nowrap focus:ring-2 focus:ring-[#b89047]"
+              className="w-full lg:w-auto py-3.5 px-6 text-sm font-bold rounded-full bg-gradient-to-r from-[#0A3670] to-[#1565C0] text-white hover:from-[#082a57] hover:to-[#0f4d96] transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 whitespace-nowrap focus:ring-2 focus:ring-[#1565C0]"
             >
               <span>Check Requirements</span>
               <ArrowRight className="w-4 h-4" aria-hidden="true" />

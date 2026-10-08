@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { 
-  Compass, 
   Menu, 
   X, 
   Hand, 
@@ -10,6 +9,7 @@ import {
   ShieldCheck,
   CheckCircle2
 } from 'lucide-react';
+import { Logo } from './Logo';
 import { A11ySettings } from '../types';
 
 interface HeaderProps {
@@ -41,101 +41,99 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Skip to Main Content Link for WCAG A11y */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-emerald-600 focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:bg-[#1565C0] focus:text-white focus:rounded-md focus:shadow-lg focus:outline-none"
       >
         Skip to main content
       </a>
 
-      {/* Top Bar Contract: 3 zones only (Brand, Nav links, Actions) in Ashen Press Theme */}
+      {/* Top Bar: Brand, Nav links, Actions matching logo colors */}
       <header
         role="banner"
         className={`sticky top-0 z-40 transition-colors duration-200 border-b ${
           isEcoMode
-            ? 'bg-[#1a140e]/95 border-[#3d2c1d] text-[#f1e9dd]'
-            : 'bg-[#fdf8ef]/95 border-[#241a12]/15 text-[#241a12] backdrop-blur-md'
+            ? 'bg-[#071933]/95 border-blue-900/50 text-slate-100 backdrop-blur-md'
+            : 'bg-white/95 border-slate-200/80 text-[#0A3670] backdrop-blur-md shadow-[0_2px_12px_rgba(10,54,112,0.04)]'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
           
-          {/* Zone 1: Single Wordmark text element */}
+          {/* Zone 1: Official Logo */}
           <a
             href="#"
-            className="flex items-center gap-2.5 text-lg sm:text-xl font-bold tracking-tight shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#b89047] rounded-lg p-1"
+            className="flex items-center shrink-0 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1565C0] rounded-xl p-1"
             aria-label="Global Visa and Passport Services - Home"
           >
-            <div className="w-8 h-8 rounded-full bg-[#241a12] flex items-center justify-center text-[#f6efe1] shadow-sm group-hover:scale-105 transition-transform">
-              <Compass className="w-4 h-4" aria-hidden="true" />
-            </div>
-            <span className={`font-serif-ashen text-xl tracking-wide ${isEcoMode ? 'text-white' : 'text-[#241a12]'}`}>
-              Global Visa <span className="text-[#b89047] font-serif italic">&</span> Passport
-            </span>
+            <Logo 
+              className="h-11 sm:h-13 w-auto transition-transform group-hover:scale-[1.01]" 
+              variant={isEcoMode ? "white" : "color"} 
+            />
           </a>
 
-          {/* Zone 2: 4-6 Clean text navigation links */}
+          {/* Zone 2: Clean navigation links */}
           <nav
             aria-label="Primary Navigation"
-            className="hidden lg:flex items-center gap-7 text-sm font-medium"
+            className="hidden lg:flex items-center gap-7 text-sm font-semibold"
           >
             <a
               href="#archive"
-              className={`transition-colors hover:text-[#b89047] flex items-center gap-1.5 ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]'
+              className={`transition-colors hover:text-[#1565C0] flex items-center gap-1.5 ${
+                isEcoMode ? 'text-blue-200' : 'text-[#0A3670]'
               }`}
             >
-              <span>3D Archive</span>
+              <span>3D Passport Shelf</span>
             </a>
             <a
               href="#destinations"
-              className={`transition-colors hover:text-[#b89047] ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] ${
+                isEcoMode ? 'text-slate-300' : 'text-[#0A3670]/80'
               }`}
             >
               Destinations
             </a>
             <a
               href="#services"
-              className={`transition-colors hover:text-[#b89047] ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] ${
+                isEcoMode ? 'text-slate-300' : 'text-[#0A3670]/80'
               }`}
             >
               Visa Services
             </a>
             <a
               href="#process"
-              className={`transition-colors hover:text-[#b89047] ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] ${
+                isEcoMode ? 'text-slate-300' : 'text-[#0A3670]/80'
               }`}
             >
               How It Works
             </a>
             <a
               href="#why-us"
-              className={`transition-colors hover:text-[#b89047] ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] ${
+                isEcoMode ? 'text-slate-300' : 'text-[#0A3670]/80'
               }`}
             >
               Why Choose Us
             </a>
             <a
               href="#sustainability"
-              className={`transition-colors hover:text-[#b89047] flex items-center gap-1.5 ${
-                isEcoMode ? 'text-emerald-400 font-semibold' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] flex items-center gap-1.5 ${
+                isEcoMode ? 'text-emerald-400 font-semibold' : 'text-[#0A3670]/80'
               }`}
             >
-              <Leaf className="w-3.5 h-3.5 text-emerald-700" aria-hidden="true" />
+              <Leaf className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
               Eco Hub
             </a>
             <a
               href="#faq"
-              className={`transition-colors hover:text-[#b89047] ${
-                isEcoMode ? 'text-[#e5dcce]' : 'text-[#241a12]/80'
+              className={`transition-colors hover:text-[#1565C0] ${
+                isEcoMode ? 'text-slate-300' : 'text-[#0A3670]/80'
               }`}
             >
               FAQ
             </a>
           </nav>
 
-          {/* Zone 3: Primary Actions & Essential Utilities */}
+          {/* Zone 3: Actions & Utilities */}
           <div className="flex items-center gap-2 sm:gap-3">
             
             {/* AI Gesture Mode Toggle */}
@@ -147,13 +145,13 @@ export const Header: React.FC<HeaderProps> = ({
               aria-pressed={isGestureModeActive}
               className={`relative p-2 sm:px-3 sm:py-2 text-xs font-semibold rounded-full flex items-center gap-1.5 transition-all ${
                 isGestureModeActive
-                  ? 'bg-[#241a12] text-[#f6efe1] ring-2 ring-[#b89047]'
+                  ? 'bg-[#0A3670] text-white ring-2 ring-[#1565C0]'
                   : isEcoMode
-                  ? 'bg-[#241a12] text-[#e5dcce] border border-[#3d2c1d] hover:text-white'
-                  : 'bg-[#f6efe1] text-[#241a12] border border-[#241a12]/15 hover:bg-[#ede5d5]'
+                  ? 'bg-blue-950/60 text-blue-200 border border-blue-800 hover:text-white'
+                  : 'bg-blue-50/80 text-[#0A3670] border border-blue-200/80 hover:bg-blue-100'
               }`}
             >
-              <Hand className="w-3.5 h-3.5 text-[#b89047]" aria-hidden="true" />
+              <Hand className="w-3.5 h-3.5 text-[#1565C0]" aria-hidden="true" />
               <span className="hidden sm:inline">AI Gestures</span>
               {isGestureModeActive && (
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true" />
@@ -169,11 +167,11 @@ export const Header: React.FC<HeaderProps> = ({
               aria-pressed={isEcoMode}
               className={`p-2 sm:px-3 sm:py-2 text-xs font-semibold rounded-full flex items-center gap-1.5 transition-all ${
                 isEcoMode
-                  ? 'bg-[#2d4a3e] text-[#f1e9dd] border border-emerald-600'
-                  : 'bg-[#f6efe1] text-[#241a12] border border-[#241a12]/15 hover:bg-[#ede5d5]'
+                  ? 'bg-emerald-950 text-emerald-200 border border-emerald-700'
+                  : 'bg-emerald-50 text-emerald-800 border border-emerald-200 hover:bg-emerald-100'
               }`}
             >
-              <Leaf className="w-3.5 h-3.5 text-emerald-700" aria-hidden="true" />
+              <Leaf className="w-3.5 h-3.5 text-emerald-600" aria-hidden="true" />
               <span className="hidden md:inline">Eco Mode</span>
             </button>
 
@@ -186,13 +184,13 @@ export const Header: React.FC<HeaderProps> = ({
               aria-expanded={isA11yOpen}
               className={`p-2 sm:px-3 sm:py-2 text-xs font-semibold rounded-full flex items-center gap-1.5 transition-all ${
                 isA11yOpen
-                  ? 'bg-[#241a12] text-[#f6efe1]'
+                  ? 'bg-[#0A3670] text-white'
                   : isEcoMode
-                  ? 'bg-[#241a12] text-[#e5dcce] border border-[#3d2c1d]'
-                  : 'bg-[#f6efe1] text-[#241a12] border border-[#241a12]/15 hover:bg-[#ede5d5]'
+                  ? 'bg-blue-950/60 text-blue-200 border border-blue-800'
+                  : 'bg-blue-50/80 text-[#0A3670] border border-blue-200/80 hover:bg-blue-100'
               }`}
             >
-              <Eye className="w-3.5 h-3.5 text-[#b89047]" aria-hidden="true" />
+              <Eye className="w-3.5 h-3.5 text-[#1565C0]" aria-hidden="true" />
               <span className="hidden lg:inline">A11y</span>
             </button>
 
@@ -200,7 +198,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={onOpenApply}
-              className="px-4 py-2 text-xs sm:text-sm font-semibold text-[#f6efe1] bg-[#241a12] hover:bg-[#382b20] transition-colors rounded-full shadow-sm whitespace-nowrap shrink-0 flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#b89047]"
+              className="px-4.5 py-2.5 text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-[#0A3670] to-[#1565C0] hover:from-[#082852] hover:to-[#104d94] transition-all rounded-full shadow-md hover:shadow-lg whitespace-nowrap shrink-0 flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-[#1565C0]"
             >
               <span>Apply For Visa</span>
               <ArrowRight className="w-3.5 h-3.5 hidden sm:inline" aria-hidden="true" />
@@ -210,11 +208,11 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg text-[#241a12] hover:bg-[#f6efe1] focus:outline-none"
+              className="lg:hidden p-2 rounded-lg text-[#0A3670] hover:bg-blue-50 focus:outline-none"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
 
           </div>
@@ -224,65 +222,71 @@ export const Header: React.FC<HeaderProps> = ({
         {mobileMenuOpen && (
           <nav
             aria-label="Mobile Navigation"
-            className={`lg:hidden px-4 pt-3 pb-6 border-t ${
+            className={`lg:hidden px-4 pt-4 pb-6 border-t ${
               isEcoMode
-                ? 'bg-slate-950 border-emerald-950 text-slate-200'
-                : 'bg-white border-slate-200 text-slate-800'
+                ? 'bg-[#071933] border-blue-900 text-slate-100'
+                : 'bg-white border-slate-200 text-[#0A3670]'
             }`}
           >
-            <div className="flex flex-col gap-3 text-base font-medium">
+            <div className="flex flex-col gap-3 text-base font-semibold">
+              <a
+                href="#archive"
+                onClick={() => setMobileMenuOpen(false)}
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
+              >
+                3D Passport &amp; Visa Shelf
+              </a>
               <a
                 href="#destinations"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
               >
                 Popular Destinations
               </a>
               <a
                 href="#services"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
               >
                 Visa Services
               </a>
               <a
                 href="#process"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
               >
-                How It Works
+                Application Process
               </a>
               <a
                 href="#why-us"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
               >
                 Why Choose Us
               </a>
               <a
                 href="#sustainability"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center gap-2"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40 flex items-center gap-2 text-emerald-600"
               >
-                <Leaf className="w-4 h-4 text-emerald-500" />
-                Eco Hub & Paperless Savings
+                <Leaf className="w-4 h-4" />
+                Eco Hub
               </a>
               <a
                 href="#faq"
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 px-3 rounded-md hover:bg-slate-100 dark:hover:bg-slate-900"
+                className="py-2.5 px-3 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/40"
               >
-                FAQs
+                FAQ
               </a>
-
-              <div className="pt-3 border-t border-slate-200/60 dark:border-slate-800 flex flex-col gap-2">
+              <div className="pt-2 border-t border-slate-100 dark:border-blue-900/50 flex flex-col gap-2">
                 <button
                   type="button"
                   onClick={() => {
                     setMobileMenuOpen(false);
                     onOpenCheckRequirements();
                   }}
-                  className="w-full py-2.5 px-4 text-center text-sm font-semibold rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200"
+                  className="w-full py-2.5 text-center text-sm font-bold border border-[#0A3670]/20 text-[#0A3670] rounded-xl"
                 >
                   Check Requirements
                 </button>
@@ -292,7 +296,7 @@ export const Header: React.FC<HeaderProps> = ({
                     setMobileMenuOpen(false);
                     onOpenApply();
                   }}
-                  className="w-full py-2.5 px-4 text-center text-sm font-semibold rounded-lg bg-slate-900 text-white"
+                  className="w-full py-3 text-center text-sm font-bold bg-gradient-to-r from-[#0A3670] to-[#1565C0] text-white rounded-xl shadow-md"
                 >
                   Start Visa Application
                 </button>
